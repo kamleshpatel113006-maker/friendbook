@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101326">
+  <title>FriendBook</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">✦</span><div><h1>FriendBook</h1><p>Your circle, in one place</p></div></div>
+    <div id="connection" class="status">● Checking connection…</div>
+  </header>
+
+  <main class="wrap">
+    <section id="loginPanel" class="panel login-panel">
+      <div class="eyebrow">PRIVATE FRIEND DIRECTORY</div>
+      <h2>Welcome back 👋</h2>
+      <p class="muted">Sign in to view and manage your group's friend profiles.</p>
+      <form id="loginForm">
+        <label>Email<input id="email" type="email" autocomplete="username" required placeholder="group@example.com"></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" required placeholder="Your password"></label>
+        <button class="primary" type="submit">Sign in</button>
+      </form>
+      <p id="loginMessage" class="message" role="status"></p>
+      <p class="small muted">The administrator must set up Firebase first. See README.txt.</p>
+    </section>
+
+    <section id="appPanel" hidden>
+      <div class="welcome-row">
+        <div><div class="eyebrow">YOUR FRIEND CIRCLE</div><h2>Friends directory</h2><p class="muted">Add a profile, or search your list.</p></div>
+        <button id="logoutBtn" class="secondary">Sign out</button>
+      </div>
+      <div class="toolbar">
+        <input id="searchInput" type="search" placeholder="🔎 Search by name, school, hobby…">
+        <button id="addBtn" class="primary">＋ Add friend</button>
+      </div>
+      <div id="notice" class="notice" role="status">Connect to the internet to sign in for the first time. Previously loaded profiles may be available offline.</div>
+      <div id="friendsGrid" class="grid"></div>
+      <div id="emptyState" class="empty" hidden><div class="empty-icon">♡</div><h3>No friends found</h3><p class="muted">Add your first profile or try another search.</p></div>
+    </section>
+  </main>
+
+  <dialog id="friendDialog">
+    <form id="friendForm" class="dialog-form">
+      <div class="dialog-head"><div><div class="eyebrow">FRIEND PROFILE</div><h2 id="dialogTitle">Add a friend</h2></div><button id="closeDialog" type="button" class="icon-btn" aria-label="Close">✕</button></div>
+      <input id="friendId" type="hidden">
+      <div class="form-grid">
+        <label class="wide">Full name *<input id="name" required maxlength="100" placeholder="Friend's name"></label>
+        <label>Photo URL (optional)<input id="photo" type="url" placeholder="https://…"></label>
+        <label>Date of birth<input id="birthday" type="date"></label>
+        <label>Phone number<input id="phone" type="tel" maxlength="30"></label>
+        <label>School / college<input id="school" maxlength="120"></label>
+        <label>Class / occupation<input id="classOccupation" maxlength="120"></label>
+        <label class="wide">Address<input id="address" maxlength="250"></label>
+        <label class="wide">Hobbies and favourite things<textarea id="hobbies" rows="2" maxlength="500"></textarea></label>
+        <label class="wide">Notes<textarea id="notes" rows="2" maxlength="1000" placeholder="Anything else to remember"></textarea></label>
+      </div>
+      <p class="small muted">Only save personal details your friend has agreed to share.</p>
+      <p id="formMessage" class="message" role="status"></p>
+      <div class="dialog-actions"><button type="button" id="cancelBtn" class="secondary">Cancel</button><button type="submit" class="primary">Save profile</button></div>
+    </form>
+  </dialog>
+  <footer>FriendBook · Keep your friends' information respectful and private.</footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

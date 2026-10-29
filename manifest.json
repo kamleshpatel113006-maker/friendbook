@@ -1,0 +1,10 @@
+{
+  "name": "FriendBook",
+  "short_name": "FriendBook",
+  "description": "A private friends directory",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b0d19",
+  "theme_color": "#101326",
+  "icons": []
+}
